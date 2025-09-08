@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      transition: background-image 0.5s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Blurred overlay for readability */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 0;
+    }
+
+    .login-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .login-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #e67e22;
+      font-weight: bold;
+    }
+
+    .btn-food {
+      background: linear-gradient(90deg, #e67e22, #d35400);
+      border: none;
+      font-weight: bold;
+    }
+
+    .btn-food:hover {
+      background: linear-gradient(90deg, #d35400, #e67e22);
+    }
+
+    label {
+      color: #444;
+      font-weight: 500;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h2>🍕 Canteen Login</h2>
+    <form action="/api/auth/login" method="POST">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-food w-100 py-2">Login</button>
+    </form>
+    <p>if don't have account ? <a href="/api/auth/register">Signup</a></p>
+  </div>
+
+  <script>
+    // Premium high-quality food images
+    const foodImages = [
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836', // pizza
+      'https://images.unsplash.com/photo-1600891963938-a8815e0b6d63', // burger
+      'https://images.unsplash.com/photo-1551218808-94e220e084d2', // breakfast
+      'https://images.unsplash.com/photo-1523983302122-73e8fdfd45dc', // pasta
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd', // salad
+      'https://images.unsplash.com/photo-1565958011709-44c0b7abdf90'  // dessert
+    ];
+
+    // Pick random background
+    const randomImage = foodImages[Math.floor(Math.random() * foodImages.length)];
+    document.body.style.backgroundImage = `url('${randomImage}')`;
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+     
+
+</body>
+</html>

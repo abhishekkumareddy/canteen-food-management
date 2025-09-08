@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Orders</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092') no-repeat center center/cover;
+      backdrop-filter: blur(5px);
+      min-height: 100vh;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      min-height: 100vh;
+      padding: 30px;
+    }
+    .order-card-link {
+      text-decoration: none;   /* removes underline */
+      color: inherit;          /* keeps text color same as parent */
+      display: block;          /* makes link behave like a block */
+    }
+
+    .order-card-link:hover {
+      text-decoration: none;   /* prevents underline on hover */
+    }
+    .order-card {
+      display: flex;
+      align-items: center;
+      border-radius: 15px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .order-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .order-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .order-details {
+      flex: 1;
+      padding: 20px;
+      color: white;
+    }
+
+    .order-details h5 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .order-price {
+      font-weight: bold;
+      color: #ffd700;
+      font-size: 1.4rem;
+    }
+
+    .btn-custom {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .order-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .order-img {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <%- include('../navandfoot/nav') %>
+
+  <div class="overlay">
+    <div class="container">
+      <h1 class="text-white mb-4">🍔 All Orders</h1>
+
+      <% for (let items of item) { %>
+        <a href="/api/item/<%= items._id %>" class="order-card-link">
+        <div class="order-card">
+          <img src="https://via.placeholder.com/200x200" class="order-img" alt="Food Image">
+          
+          <div class="order-details">
+            <h5><%= items.name %></h5>
+            <p class="text-light"><%= items.description %></p>
+            <p class="text-light">Manager:<%=items.managerId.name%></p>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+              <span class="order-price">₹<%= items.price %></span>
+              <div>
+                <!-- <a href="/api/item/<%= items._id %>" class="btn btn-primary btn-custom">See Details</a> -->
+                <% if(curruser && curruser.role == 'admin'){%>
+                <a href="/api/item/edit/<%= items._id %>" class="btn btn-warning">Update Item</a>
+                <%}%>
+              </div>
+            </div>
+          </div>
+        </div>
+        </a>
+      <% } %>
+    </div>
+  </div>
+ <%- include('../navandfoot/footer') %>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>All Users</title>
+</head>
+<body>
+    <%- include('../navandfoot/nav') %>
+    <h1>All users</h1>
+    <% for (let user of User) { %>
+        <div>
+            <p><%= user.name %></p>
+            <p><%= user.email %></p>
+            <p><%=user._id%></p>
+            <a href="/api/auth/<%=user._id%>">update</a>
+        </div>
+    <% } %>
+    <%- include('../navandfoot/footer') %>
+</body>
+</html>

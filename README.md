@@ -13,15 +13,17 @@ The system supports two types of users:
 
 ## 🚀 Features
 
-![Features Screenshot](images/features.png)
+
 
 ### For Users
+![Features Screenshot](images/userpage.png)
 - Register and login securely.
 - Browse available food items.
 - Place orders and track their status.
 - Receive order notifications via email.
 
 ### For Admins
+![Features Screenshot](images/adminpage.png)
 - Add, update, or delete food items.
 - Manage incoming orders.
 - Monitor user activities.

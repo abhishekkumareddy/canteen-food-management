@@ -68,3 +68,24 @@ canteen-food-management/
 │── package.json
 └── README.md
 
+# 🔐 Security Notes
+- Do not commit `.env` to version control.  
+- Use strong JWT secrets.  
+- Use environment-specific email credentials (with App Passwords).  
+- Keep production credentials secure and separate from development ones.  
+
+---
+
+# 📌 Future Enhancements
+- Online payment gateway integration.  
+- Real-time order tracking system.  
+- Admin analytics dashboard with charts.  
+- Push notifications for order updates.  
+
+---
+
+# 👨‍💻 Author
+**Abishek Kumar Reddy**  
+📌 GitHub: [abhishekkumareddy](https://github.com/abhishekkumareddy)  
+
+---
